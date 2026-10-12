@@ -1,0 +1,11 @@
+FARMEANDO AURA - Landing Municipio Escolar 2027
+
+ANTES DE SUBIR, EDITA:
+1) js/script.js  -> CONFIG.whatsappNumber  (ej: "51987654321")
+2) index.html    -> nombres, grados, propuestas y fecha de elecciones (busca los comentarios "EDITAR")
+3) assets/       -> agrega logo.png, alcaldesa.jpg, regidor-1.jpg ... regidor-6.jpg
+                    (si no existen, se muestran las mascotas como respaldo)
+
+SUBIR A VERCEL:
+- Sube esta carpeta a GitHub e impórtala en vercel.com, o arrastra la carpeta con la CLI: "vercel"
+- No necesita build: es un sitio estático (framework preset: Other).
