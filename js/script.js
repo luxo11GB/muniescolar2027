@@ -7,7 +7,7 @@ const CONFIG = {
   // Número de WhatsApp que recibirá los mensajes.
   // Formato internacional, solo dígitos. Perú = 51 + número de 9 dígitos.
   // Ejemplo: "51987654321"
-  whatsappNumber: "",
+  whatsappNumber: "51936173480",
  
   // Contador de visitas: usa la función /api/visitas (Vercel + Upstash Redis).
   counter: {
