@@ -1,27 +1,25 @@
 /* ==========================================================
    Farmeando AURA · Municipio Escolar 2027
    ========================================================== */
-
+ 
 /* ---------- CONFIGURACIÓN (edita aquí) ---------- */
 const CONFIG = {
   // Número de WhatsApp que recibirá los mensajes.
   // Formato internacional, solo dígitos. Perú = 51 + número de 9 dígitos.
   // Ejemplo: "51987654321"
-  whatsappNumber: "51936173480",
-
-  // Contador de visitas global (servicio gratuito counterapi.dev).
-  // Cambia "namespace" por algo único para que nadie más use el mismo contador.
+  whatsappNumber: "",
+ 
+  // Contador de visitas: usa la función /api/visitas (Vercel + Upstash Redis).
   counter: {
     enabled: true,
-    namespace: "farmeando-aura-ml-2027",
-    key: "visitas",
+    endpoint: "/api/visitas",
   },
 };
-
+ 
 /* ---------- Utilidades ---------- */
 const $ = (sel) => document.querySelector(sel);
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
+ 
 /* Acceso seguro a storage (puede fallar en modo privado) */
 const store = {
   get(key, fallback = null) {
@@ -31,36 +29,65 @@ const store = {
   sget(key) { try { return sessionStorage.getItem(key); } catch { return null; } },
   sset(key, value) { try { sessionStorage.setItem(key, value); } catch { /* ignorar */ } },
 };
-
+ 
 /* ---------- Menú móvil ---------- */
 (function initNav() {
   const toggle = $("#navToggle");
   const links = $("#navLinks");
   if (!toggle || !links) return;
-
+ 
   const close = () => {
     links.classList.remove("is-open");
     toggle.setAttribute("aria-expanded", "false");
     toggle.setAttribute("aria-label", "Abrir menú");
   };
-
+ 
   toggle.addEventListener("click", () => {
     const open = links.classList.toggle("is-open");
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
   });
-
+ 
   links.addEventListener("click", (e) => { if (e.target.closest("a")) close(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
 })();
-
+ 
+/* ---------- Pestañas del plan de trabajo ---------- */
+(function initTabs() {
+  const tabs = [...document.querySelectorAll('[role="tab"]')];
+  if (!tabs.length) return;
+ 
+  const select = (tab, focus = false) => {
+    tabs.forEach((t) => {
+      const active = t === tab;
+      t.setAttribute("aria-selected", String(active));
+      t.tabIndex = active ? 0 : -1;
+      const panel = document.getElementById(t.getAttribute("aria-controls"));
+      if (panel) panel.hidden = !active;
+    });
+    if (focus) tab.focus();
+  };
+ 
+  tabs.forEach((tab, i) => {
+    tab.addEventListener("click", () => select(tab));
+    tab.addEventListener("keydown", (e) => {
+      let next = null;
+      if (e.key === "ArrowRight") next = tabs[(i + 1) % tabs.length];
+      if (e.key === "ArrowLeft") next = tabs[(i - 1 + tabs.length) % tabs.length];
+      if (e.key === "Home") next = tabs[0];
+      if (e.key === "End") next = tabs[tabs.length - 1];
+      if (next) { e.preventDefault(); select(next, true); }
+    });
+  });
+})();
+ 
 /* ---------- Juego del aura ---------- */
 (function initAura() {
   const btn = $("#auraBtn");
   const valueEl = $("#auraValue");
   const rankEl = $("#auraRank");
   if (!btn) return;
-
+ 
   const ranks = [
     [0,    "Toca a los personajes y empieza a farmear"],
     [10,   "Calentando motores"],
@@ -69,15 +96,15 @@ const store = {
     [400,  "Aura de alcaldesa"],
     [1000, "Aura legendaria. Ya puedes votar tranquilo"],
   ];
-
+ 
   let aura = parseInt(store.get("aura_points", "0"), 10) || 0;
-
+ 
   const rankFor = (n) => ranks.filter(([min]) => n >= min).pop()[1];
   const render = () => {
     valueEl.textContent = aura.toLocaleString("es-PE");
     rankEl.textContent = rankFor(aura);
   };
-
+ 
   const floatPlus = (x, y) => {
     if (prefersReducedMotion) return;
     const el = document.createElement("span");
@@ -88,7 +115,7 @@ const store = {
     document.body.appendChild(el);
     setTimeout(() => el.remove(), 900);
   };
-
+ 
   btn.addEventListener("click", (e) => {
     aura += 1;
     store.set("aura_points", String(aura));
@@ -99,21 +126,21 @@ const store = {
     const y = e.clientY || rect.top + rect.height / 2;
     floatPlus(x + (Math.random() * 30 - 15), y);
   });
-
+ 
   render();
 })();
-
+ 
 /* ---------- Contador de visitas ---------- */
 (function initVisitCounter() {
   const el = $("#visitCount");
   if (!el) return;
-
+ 
   const renderDigits = (n) => {
     const str = String(Math.max(0, Math.floor(n))).padStart(6, "0");
     el.innerHTML = [...str].map((d) => `<span>${d}</span>`).join("");
     el.setAttribute("aria-label", `${n.toLocaleString("es-PE")} visitas`);
   };
-
+ 
   const animateTo = (target) => {
     if (prefersReducedMotion || target < 30) return renderDigits(target);
     const start = performance.now();
@@ -127,34 +154,34 @@ const store = {
     };
     requestAnimationFrame(tick);
   };
-
+ 
   // Valor guardado por si no hay internet o el servicio falla
   const lastKnown = parseInt(store.get("visit_last_count", "0"), 10) || 0;
   renderDigits(lastKnown);
-
+ 
   if (!CONFIG.counter.enabled) return;
-
-  const { namespace, key } = CONFIG.counter;
-  const base = `https://api.counterapi.dev/v1/${encodeURIComponent(namespace)}/${encodeURIComponent(key)}`;
-
+ 
+  const endpoint = CONFIG.counter.endpoint;
+ 
   // Se cuenta una visita por sesión (no suma al recargar la página)
   const alreadyCounted = store.sget("visit_counted") === "1";
-
-  const request = async (url) => {
-    const res = await fetch(url, { cache: "no-store" });
+ 
+  // POST suma 1 y devuelve el total; GET solo devuelve el total
+  const request = async (method) => {
+    const res = await fetch(endpoint, { method, cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     if (typeof data.count !== "number") throw new Error("Respuesta inesperada");
     return data.count;
   };
-
+ 
   (async () => {
     try {
       let count;
       if (alreadyCounted) {
-        try { count = await request(base); } catch { count = await request(`${base}/up`); }
+        count = await request("GET");
       } else {
-        count = await request(`${base}/up`);
+        count = await request("POST");
         store.sset("visit_counted", "1");
       }
       store.set("visit_last_count", String(count));
@@ -165,31 +192,31 @@ const store = {
     }
   })();
 })();
-
+ 
 /* ---------- Formulario de comentarios → WhatsApp ---------- */
 (function initCommentForm() {
   const form = $("#commentForm");
   if (!form) return;
-
+ 
   const msg = $("#cMsg");
   const name = $("#cName");
   const grade = $("#cGrade");
   const count = $("#charCount");
   const status = $("#formStatus");
-
+ 
   const setStatus = (text, type) => {
     status.textContent = text;
     status.className = "form__status" + (type ? ` is-${type}` : "");
   };
-
+ 
   msg.addEventListener("input", () => {
     count.textContent = msg.value.length;
     msg.classList.remove("is-invalid");
   });
-
+ 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-
+ 
     const text = msg.value.trim();
     if (text.length < 5) {
       msg.classList.add("is-invalid");
@@ -197,23 +224,23 @@ const store = {
       msg.focus();
       return;
     }
-
+ 
     const number = (CONFIG.whatsappNumber || "").replace(/\D/g, "");
     if (!number) {
       setStatus("El envío todavía no está activado: falta configurar el número de WhatsApp.", "error");
       return;
     }
-
+ 
     const lines = ["Hola plancha AURA 👋", ""];
     if (name.value.trim())  lines.push(`Nombre: ${name.value.trim()}`);
     if (grade.value.trim()) lines.push(`Grado y sección: ${grade.value.trim()}`);
     if (name.value.trim() || grade.value.trim()) lines.push("");
     lines.push("Mensaje:", text);
-
+ 
     const url = `https://wa.me/${number}?text=${encodeURIComponent(lines.join("\n"))}`;
     const win = window.open(url, "_blank", "noopener");
     if (!win) window.location.href = url; // si el navegador bloquea la ventana
-
+ 
     setStatus("Listo. Termina de enviar el mensaje en WhatsApp. ¡Gracias por participar!", "ok");
     form.reset();
     count.textContent = "0";
