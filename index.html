@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Farmeando AURA | Municipio Escolar 2027</title>
+  <meta name="description" content="Plancha AURA (Avanzamos Unidos, Renovando Actitudes). Conoce nuestras propuestas, a la alcaldesa y a los regidores para el Municipio Escolar 2027 de Mariscal Luzuriaga." />
+  <meta name="theme-color" content="#1b1009" />
+  <meta property="og:title" content="Farmeando AURA | Municipio Escolar 2027" />
+  <meta property="og:description" content="El futuro de Mariscal Luzuriaga se farmea con actitud." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🥥%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Mascotas reutilizables (pan y coco) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="mascots" viewBox="0 0 400 300">
+        <!-- PAN -->
+        <g transform="rotate(-6 115 170)">
+          <rect x="50" y="62" width="130" height="210" rx="62" fill="#E8932B" stroke="#6a3b12" stroke-width="5"/>
+          <rect x="62" y="74" width="106" height="40" rx="20" fill="#F7B955" opacity=".75"/>
+          <path d="M82 92 l16 22 M112 88 l16 26 M142 92 l12 20" stroke="#B86A16" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="92" cy="150" r="19" fill="#fff" stroke="#6a3b12" stroke-width="4"/>
+          <circle cx="140" cy="150" r="19" fill="#fff" stroke="#6a3b12" stroke-width="4"/>
+          <circle cx="96" cy="152" r="8" fill="#2a160a"/>
+          <circle cx="144" cy="152" r="8" fill="#2a160a"/>
+          <circle cx="99" cy="148" r="3" fill="#fff"/>
+          <circle cx="147" cy="148" r="3" fill="#fff"/>
+          <path d="M92 198 Q116 224 142 198" fill="#fff" stroke="#6a3b12" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="72" cy="188" r="9" fill="#FF93B8" opacity=".7"/>
+          <circle cx="164" cy="188" r="9" fill="#FF93B8" opacity=".7"/>
+        </g>
+        <!-- COCO -->
+        <g transform="rotate(5 290 170)">
+          <circle cx="290" cy="170" r="98" fill="#7B4526" stroke="#2f180a" stroke-width="5"/>
+          <path d="M214 120 Q290 60 366 120 Q290 96 214 120Z" fill="#9A5A33" opacity=".8"/>
+          <path d="M240 118 l-8 -12 M290 100 l0 -14 M340 118 l8 -12" stroke="#4b2812" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="256" cy="158" r="19" fill="#fff" stroke="#2f180a" stroke-width="4"/>
+          <circle cx="322" cy="158" r="19" fill="#fff" stroke="#2f180a" stroke-width="4"/>
+          <circle cx="262" cy="160" r="8" fill="#2a160a"/>
+          <circle cx="328" cy="160" r="8" fill="#2a160a"/>
+          <circle cx="265" cy="156" r="3" fill="#fff"/>
+          <circle cx="331" cy="156" r="3" fill="#fff"/>
+          <path d="M236 134 Q256 120 276 132" stroke="#2f180a" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M304 128 Q324 116 344 130" stroke="#2f180a" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M254 212 Q290 244 330 208" fill="#fff" stroke="#2f180a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="232" cy="198" r="10" fill="#FF93B8" opacity=".55"/>
+          <circle cx="348" cy="198" r="10" fill="#FF93B8" opacity=".55"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+
+  <header class="nav" id="top">
+    <div class="nav__inner">
+      <a class="brand" href="#top" aria-label="Farmeando AURA, inicio">
+        <span class="brand__logo">
+          <!-- Pon tu logo en assets/logo.png (si no existe, se muestra la mascota) -->
+          <img src="assets/logo.png" alt="" width="44" height="44" onerror="this.remove()" />
+          <svg viewBox="0 0 400 300" aria-hidden="true"><use href="#mascots"/></svg>
+        </span>
+        <span class="brand__name">Farmeando AURA</span>
+      </a>
+
+      <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav__links" id="navLinks" aria-label="Principal">
+        <a href="#aura">Quiénes somos</a>
+        <a href="#propuestas">Propuestas</a>
+        <a href="#plancha">Nuestra plancha</a>
+        <a href="#votar">Cómo votar</a>
+        <a class="nav__cta" href="#comentarios">Escríbenos</a>
+      </nav>
+    </div>
+    <div class="rainbow" aria-hidden="true"></div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero__grid">
+        <div class="hero__text">
+          <p class="hero__tag">Municipio Escolar 2027 · I.E. Mariscal Luzuriaga</p>
+          <h1>El futuro de Mariscal Luzuriaga se farmea con actitud.</h1>
+          <p class="hero__lead">
+            Somos la Lista <strong>AURA</strong>: Avanzamos Unidos, Renovando Actitudes.
+            Venimos con propuestas claras, ganas de trabajar y cero promesas al aire.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#propuestas">Ver propuestas</a>
+            <a class="btn btn--ghost" href="#comentarios">Déjanos tu mensaje</a>
+          </div>
+        </div>
+
+        <div class="hero__aura">
+          <button class="aura-btn" id="auraBtn" type="button" aria-describedby="auraHint">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Mascotas de la plancha AURA: un pan y un coco"><use href="#mascots"/></svg>
+          </button>
+          <div class="aura-meter">
+            <p class="aura-meter__label">Tu aura</p>
+            <p class="aura-meter__value" id="auraValue" aria-live="polite">0</p>
+            <p class="aura-meter__rank" id="auraRank">Toca a los personajes y empieza a farmear</p>
+          </div>
+          <p class="sr-only" id="auraHint">Botón de juego: cada toque suma puntos de aura.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIÉNES SOMOS / AURA -->
+    <section class="section" id="aura">
+      <div class="wrap">
+        <h2 class="section__title">AURA no es solo un nombre, es cómo vamos a trabajar</h2>
+        <p class="section__lead">Cada letra es un compromiso con todos los estudiantes del colegio.</p>
+
+        <ul class="letters">
+          <li class="letter letter--a">
+            <span class="letter__big" aria-hidden="true">A</span>
+            <h3>Avanzamos</h3>
+            <p>Proyectos con pasos claros y fechas. Lo que prometemos, lo cumplimos y lo mostramos.</p>
+          </li>
+          <li class="letter letter--u">
+            <span class="letter__big" aria-hidden="true">U</span>
+            <h3>Unidos</h3>
+            <p>Todos los grados y secciones tienen voz. El municipio es de todos, no de unos pocos.</p>
+          </li>
+          <li class="letter letter--r">
+            <span class="letter__big" aria-hidden="true">R</span>
+            <h3>Renovando</h3>
+            <p>Ideas nuevas para el colegio, cuidando lo que ya funciona bien.</p>
+          </li>
+          <li class="letter letter--a2">
+            <span class="letter__big" aria-hidden="true">A</span>
+            <h3>Actitudes</h3>
+            <p>Respeto, compromiso y buena vibra todos los días, incluso en lunes de formación.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PROPUESTAS -->
+    <section class="section section--alt" id="propuestas">
+      <div class="wrap wrap--narrow">
+        <h2 class="section__title">Nuestras propuestas</h2>
+        <p class="section__lead">Toca cada una para ver qué haremos exactamente.</p>
+
+        <!-- EDITAR: cambia los textos por las propuestas reales de la plancha -->
+        <div class="props">
+          <details class="prop prop--1" open>
+            <summary><span class="prop__icon" aria-hidden="true">⚽</span><span class="prop__title">Deporte y recreos con ganas</span></summary>
+            <div class="prop__body">
+              <ul>
+                <li>Interclases todos los meses, con equipos mixtos.</li>
+                <li>Torneos de vóley, fútbol y juegos de mesa en los recreos.</li>
+                <li>Premios y reconocimiento a las secciones que más participan.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="prop prop--2">
+            <summary><span class="prop__icon" aria-hidden="true">📚</span><span class="prop__title">Tutorías entre compañeros para salvar el bimestre</span></summary>
+            <div class="prop__body">
+              <ul>
+                <li>Grupos de estudio guiados por estudiantes de grados superiores.</li>
+                <li>Horarios de refuerzo antes de las evaluaciones.</li>
+                <li>Banco de apuntes y materiales compartidos.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="prop prop--3">
+            <summary><span class="prop__icon" aria-hidden="true">📣</span><span class="prop__title">Tu voz sí cuenta</span></summary>
+            <div class="prop__body">
+              <ul>
+                <li>Buzón de ideas físico y digital, con respuesta pública.</li>
+                <li>Reuniones mensuales con los delegados de cada aula.</li>
+                <li>Rendición de cuentas al final de cada bimestre.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="prop prop--4">
+            <summary><span class="prop__icon" aria-hidden="true">🎤</span><span class="prop__title">Cultura y talento</span></summary>
+            <div class="prop__body">
+              <ul>
+                <li>Festival de talentos: música, baile, dibujo, humor y más.</li>
+                <li>Murales y espacios artísticos en el colegio.</li>
+                <li>Actividades por fechas cívicas con participación de todos.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="prop prop--5">
+            <summary><span class="prop__icon" aria-hidden="true">🌱</span><span class="prop__title">Colegio limpio y buena convivencia</span></summary>
+            <div class="prop__body">
+              <ul>
+                <li>Campañas de reciclaje y brigadas de limpieza por aula.</li>
+                <li>Cero bullying: espacio seguro para reportar y ser escuchado.</li>
+                <li>Charlas de bienestar emocional con apoyo de tutoría.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="prop prop--6">
+            <summary><span class="prop__icon" aria-hidden="true">💡</span><span class="prop__title">Emprendimiento y tecnología</span></summary>
+            <div class="prop__body">
+              <ul>
+                <li>Feria de emprendimientos escolares.</li>
+                <li>Talleres de diseño, edición de video y programación básica.</li>
+                <li>Comunicación del municipio en redes con información al día.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANCHA -->
+    <section class="section" id="plancha">
+      <div class="wrap">
+        <h2 class="section__title">Conoce a nuestro equipo</h2>
+        <p class="section__lead">Estudiantes como tú, con ganas de que el colegio mejore.</p>
+
+        <!-- EDITAR: nombres, grados y fotos (assets/alcaldesa.jpg, assets/regidor-1.jpg ...) -->
+        <article class="mayor">
+          <div class="avatar avatar--xl">
+            <img src="assets/alcaldesa.jpg" alt="Foto de la candidata a alcaldesa" onerror="this.remove()" />
+            <span class="avatar__fallback" aria-hidden="true">🥥</span>
+          </div>
+          <div class="mayor__info">
+            <p class="role">Candidata a Alcaldesa</p>
+            <h3>Nombre de la alcaldesa</h3>
+            <p class="meta">5.° de secundaria · Sección “A”</p>
+            <blockquote>
+              “Quiero un colegio donde todos se sientan escuchados y donde las buenas ideas se conviertan en hechos.”
+            </blockquote>
+          </div>
+        </article>
+
+        <h3 class="subhead">Nuestros regidores</h3>
+        <div class="team">
+          <article class="person">
+            <div class="avatar"><img src="assets/regidor-1.jpg" alt="" onerror="this.remove()" /><span class="avatar__fallback" aria-hidden="true">🥖</span></div>
+            <p class="role">Teniente Alcalde</p>
+            <h4>Nombre Apellido</h4>
+            <p class="meta">4.° de secundaria</p>
+          </article>
+          <article class="person">
+            <div class="avatar"><img src="assets/regidor-2.jpg" alt="" onerror="this.remove()" /><span class="avatar__fallback" aria-hidden="true">🥖</span></div>
+            <p class="role">Regiduría de Educación</p>
+            <h4>Nombre Apellido</h4>
+            <p class="meta">4.° de secundaria</p>
+          </article>
+          <article class="person">
+            <div class="avatar"><img src="assets/regidor-3.jpg" alt="" onerror="this.remove()" /><span class="avatar__fallback" aria-hidden="true">🥥</span></div>
+            <p class="role">Regiduría de Cultura y Deporte</p>
+            <h4>Nombre Apellido</h4>
+            <p class="meta">4.° de secundaria</p>
+          </article>
+          <article class="person">
+            <div class="avatar"><img src="assets/regidor-4.jpg" alt="" onerror="this.remove()" /><span class="avatar__fallback" aria-hidden="true">🥖</span></div>
+            <p class="role">Regiduría de Salud y Ambiente</p>
+            <h4>Nombre Apellido</h4>
+            <p class="meta">4.° de secundaria</p>
+          </article>
+          <article class="person">
+            <div class="avatar"><img src="assets/regidor-5.jpg" alt="" onerror="this.remove()" /><span class="avatar__fallback" aria-hidden="true">🥥</span></div>
+            <p class="role">Regiduría de Derechos del Niño y Adolescente</p>
+            <h4>Nombre Apellido</h4>
+            <p class="meta">3.° de secundaria</p>
+          </article>
+          <article class="person">
+            <div class="avatar"><img src="assets/regidor-6.jpg" alt="" onerror="this.remove()" /><span class="avatar__fallback" aria-hidden="true">🥖</span></div>
+            <p class="role">Regiduría de Emprendimiento y Tecnología</p>
+            <h4>Nombre Apellido</h4>
+            <p class="meta">3.° de secundaria</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO VOTAR -->
+    <section class="section section--alt" id="votar">
+      <div class="wrap wrap--narrow">
+        <h2 class="section__title">Cómo votar por AURA</h2>
+        <p class="section__lead">Votar es rápido, secreto y tu voto vale igual que el de todos.</p>
+
+        <ol class="steps">
+          <li><strong>Infórmate.</strong> Revisa las propuestas de todas las listas y compáralas.</li>
+          <li><strong>Pregunta.</strong> Escríbenos o búscanos en el recreo, respondemos todo.</li>
+          <li><strong>Vota el día de elecciones.</strong> Busca el símbolo del pan y el coco en la cédula.</li>
+        </ol>
+
+        <!-- EDITAR: fecha real de las elecciones -->
+        <div class="date-box">
+          <p class="date-box__label">Día de elecciones</p>
+          <p class="date-box__value">Fecha por confirmar</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMENTARIOS -->
+    <section class="section" id="comentarios">
+      <div class="wrap wrap--narrow">
+        <h2 class="section__title">Cuéntanos qué quieres para tu colegio</h2>
+        <p class="section__lead">Tu idea, duda o sugerencia nos llega directo. Leemos todos los mensajes.</p>
+
+        <form class="form" id="commentForm" novalidate>
+          <div class="form__row">
+            <label class="field">
+              <span>Nombre (opcional)</span>
+              <input type="text" name="nombre" id="cName" maxlength="40" autocomplete="given-name" placeholder="Tu nombre o apodo" />
+            </label>
+            <label class="field">
+              <span>Grado y sección (opcional)</span>
+              <input type="text" name="grado" id="cGrade" maxlength="20" placeholder="Ej: 3.° B" />
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Tu mensaje</span>
+            <textarea name="mensaje" id="cMsg" rows="5" maxlength="500" required placeholder="Escribe aquí tu propuesta, pregunta o comentario…"></textarea>
+            <small class="counter"><span id="charCount">0</span>/500</small>
+          </label>
+
+          <button class="btn btn--primary btn--full" type="submit">Enviar mensaje</button>
+          <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+          <p class="form__note">Al enviar, se abrirá WhatsApp con tu mensaje listo para mandar a la plancha.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="rainbow" aria-hidden="true"></div>
+    <div class="wrap footer__inner">
+      <div class="footer__brand">
+        <svg viewBox="0 0 400 300" aria-hidden="true"><use href="#mascots"/></svg>
+        <div>
+          <p class="footer__title">Farmeando AURA</p>
+          <p class="footer__sub">Avanzamos Unidos, Renovando Actitudes</p>
+        </div>
+      </div>
+
+      <div class="footer__links">
+        <a href="https://www.instagram.com/farmeando.aura.ml" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@farmeando.aura.ml" target="_blank" rel="noopener">TikTok</a>
+      </div>
+
+      <div class="visits" aria-live="polite">
+        <p class="visits__label">Esta página ha sido visitada</p>
+        <p class="visits__odometer" id="visitCount" aria-label="Contador de visitas">
+          <span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span>
+        </p>
+        <p class="visits__label">veces</p>
+      </div>
+    </div>
+    <p class="footer__copy">Municipio Escolar 2027 · By Gzales</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
