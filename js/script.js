@@ -231,7 +231,7 @@ const store = {
       return;
     }
  
-    const lines = ["Hola plancha AURA 👋", ""];
+    const lines = ["Hola Lista 2, Farmeando AURA 👋", ""];
     if (name.value.trim())  lines.push(`Nombre: ${name.value.trim()}`);
     if (grade.value.trim()) lines.push(`Grado y sección: ${grade.value.trim()}`);
     if (name.value.trim() || grade.value.trim()) lines.push("");

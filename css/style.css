@@ -89,6 +89,12 @@ p { margin: 0; }
 .brand__logo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
 .brand__logo svg { width: 120%; height: auto; }
 .brand__name { font-family: var(--font-display); font-size: 1.35rem; }
+.list-badge {
+  display: inline-block; background: var(--pan); color: var(--horno);
+  font-family: var(--font-display); letter-spacing: .03em; line-height: 1;
+  padding: 5px 12px; border-radius: 999px; margin-right: 6px;
+}
+.list-badge--sm { font-size: .9rem; padding: 4px 10px; margin: 0; }
  
 .nav__links { display: flex; align-items: center; gap: 6px; }
 .nav__links a {
@@ -211,24 +217,21 @@ p { margin: 0; }
 .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
 .avatar__fallback { font-family: var(--font-display); font-size: 2.4rem; color: var(--pan); }
 .avatar--xl .avatar__fallback { font-size: 4.6rem; color: var(--coco); }
+.avatar--lg { width: 150px; height: 150px; border: 5px solid var(--horno); background: var(--crema); }
+.avatar--lg .avatar__fallback { font-size: 3.2rem; color: var(--coco); }
 .avatar--sm { width: 84px; height: 84px; }
 .avatar--sm .avatar__fallback { font-size: 1.8rem; }
  
 .subhead { margin-top: 56px; font-size: 1.8rem; }
-.team { margin-top: 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.person {
-  display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
-  padding: 22px; border-radius: var(--radius); background: var(--horno-2); border: 1px solid var(--linea);
-}
-.person .avatar { margin-bottom: 12px; }
-.person:nth-child(4n+1) .avatar { border-color: var(--rosa); }
-.person:nth-child(4n+2) .avatar { border-color: var(--cielo); }
-.person:nth-child(4n+3) .avatar { border-color: var(--menta); }
-.person:nth-child(4n)   .avatar { border-color: var(--pan); }
-.person .role { font-weight: 800; color: var(--pan); font-size: .98rem; line-height: 1.3; }
-.person h4 { font-size: 1.3rem; line-height: 1.15; }
-.person .meta { color: var(--crema-2); font-size: .93rem; margin-top: 6px; line-height: 1.45; }
  
+.regidor {
+  display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center;
+  padding: 26px; border-radius: 32px; background: var(--pan); color: var(--horno);
+}
+.regidor .role { font-weight: 800; font-size: .98rem; line-height: 1.3; color: #5a2f0b; }
+.regidor h4 { font-size: clamp(1.35rem, 2.4vw, 1.7rem); line-height: 1.12; margin-top: 4px; }
+.regidor__text { margin-top: 10px; font-weight: 600; font-size: .98rem; line-height: 1.45; }
+.team { margin-top: 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 /* Objetivos */
 .goals {
   margin-top: 44px; display: grid; grid-template-columns: 1fr 1.3fr; gap: 28px; align-items: start;
@@ -364,7 +367,7 @@ p { margin: 0; }
   .hero__aura { order: -1; }
   .aura-btn { width: min(78%, 340px); }
   .letters { grid-template-columns: repeat(2, 1fr); }
-  .team { grid-template-columns: repeat(2, 1fr); }
+  .team { grid-template-columns: 1fr; }
   .goals { grid-template-columns: 1fr; }
   .resources__grid { grid-template-columns: 1fr; }
   .footer__inner { grid-template-columns: 1fr; justify-items: center; text-align: center; }
@@ -387,7 +390,7 @@ p { margin: 0; }
 @media (max-width: 640px) {
   .section { padding: 64px 0; }
   .hero { padding-top: 32px; }
-  .mayor { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 28px 22px; }
+  .mayor, .regidor { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 28px 22px; }
   .mayor blockquote { border-left: 0; padding-left: 0; border-top: 4px solid var(--horno); padding-top: 14px; }
   .form__row { grid-template-columns: 1fr; }
   .form { padding: 22px 18px; }
@@ -400,6 +403,7 @@ p { margin: 0; }
  
 @media (max-width: 480px) {
   .letters, .team { grid-template-columns: 1fr; }
+  .list-badge--sm { display: none; }
   .brand__name { font-size: 1.15rem; }
   .hero__actions .btn { width: 100%; }
 }
@@ -410,3 +414,4 @@ p { margin: 0; }
   .float-plus { animation-duration: .01s; }
   * { transition-duration: .01s !important; }
 }
+ 
