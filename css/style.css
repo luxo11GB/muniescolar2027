@@ -365,6 +365,28 @@ p { margin: 0; }
 }
 .footer__copy { text-align: center; color: #9b8566; font-size: .88rem; padding: 0 20px 30px; }
  
+/* ---------- BOTÓN DE MÚSICA ---------- */
+.music-btn {
+  position: fixed; z-index: 60;
+  right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom));
+  width: 58px; height: 58px; border-radius: 50%; cursor: pointer;
+  display: grid; place-items: center;
+  background: var(--pan); color: var(--horno); border: 3px solid var(--horno);
+  box-shadow: 0 5px 0 #a8641a, 0 10px 24px rgba(0,0,0,.45);
+  transition: transform .15s, box-shadow .15s;
+}
+.music-btn:hover { transform: translateY(-2px); }
+.music-btn:active { transform: translateY(3px); box-shadow: 0 2px 0 #a8641a, 0 6px 14px rgba(0,0,0,.45); }
+.music-btn[hidden] { display: none; }
+.music-btn__on { display: none; }
+.music-btn.is-playing .music-btn__on { display: block; }
+.music-btn.is-playing .music-btn__off { display: none; }
+.music-btn.is-playing::after {
+  content: ""; position: absolute; inset: -8px; border-radius: 50%;
+  border: 3px solid var(--pan); opacity: 0; animation: ring 2s ease-out infinite;
+}
+@keyframes ring { 0% { transform: scale(.85); opacity: .7; } 100% { transform: scale(1.25); opacity: 0; } }
+ 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 960px) {
   .hero__grid { grid-template-columns: 1fr; }
@@ -416,6 +438,7 @@ p { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .aura-btn { animation: none; }
+  .music-btn.is-playing::after { animation: none; }
   .float-plus { animation-duration: .01s; }
   * { transition-duration: .01s !important; }
 }

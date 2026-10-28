@@ -52,6 +52,59 @@ const store = {
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
 })();
  
+/* ---------- Música de fondo ---------- */
+(function initMusic() {
+  const audio = $("#bgMusic");
+  const btn = $("#musicBtn");
+  if (!audio || !btn) return;
+ 
+  audio.volume = 0.35; // volumen suave (0 a 1)
+ 
+  // Si la persona la silenció antes, respetamos su decisión
+  let wantsMusic = store.get("music_off") !== "1";
+ 
+  const setUI = (playing) => {
+    btn.classList.toggle("is-playing", playing);
+    btn.setAttribute("aria-pressed", String(playing));
+    btn.setAttribute("aria-label", playing ? "Silenciar música" : "Activar música");
+  };
+ 
+  const play = async () => {
+    try { await audio.play(); setUI(true); return true; }
+    catch { setUI(false); return false; }
+  };
+ 
+  btn.addEventListener("click", () => {
+    if (audio.paused) { wantsMusic = true; store.set("music_off", "0"); play(); }
+    else { wantsMusic = false; store.set("music_off", "1"); audio.pause(); setUI(false); }
+  });
+ 
+  // Si el archivo no existe, se oculta el botón
+  audio.addEventListener("error", () => { btn.hidden = true; });
+ 
+  // Los navegadores bloquean el audio automático: se intenta al cargar
+  // y, si lo bloquean, empieza con el primer toque o tecla de la persona.
+  if (wantsMusic) {
+    play().then((ok) => {
+      if (ok) return;
+      const events = ["pointerdown", "keydown", "touchend"];
+      const start = (e) => {
+        if (e.target.closest && e.target.closest("#musicBtn")) return;
+        events.forEach((ev) => document.removeEventListener(ev, start));
+        if (wantsMusic && audio.paused) play();
+      };
+      events.forEach((ev) => document.addEventListener(ev, start));
+    });
+  }
+ 
+  // Pausa al cambiar de pestaña y reanuda al volver
+  let resumeOnReturn = false;
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) { resumeOnReturn = !audio.paused; audio.pause(); }
+    else if (resumeOnReturn && wantsMusic) { play(); resumeOnReturn = false; }
+  });
+})();
+ 
 /* ---------- Pestañas del plan de trabajo ---------- */
 (function initTabs() {
   const tabs = [...document.querySelectorAll('[role="tab"]')];
@@ -246,3 +299,4 @@ const store = {
     count.textContent = "0";
   });
 })();
+ 
