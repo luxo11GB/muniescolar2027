@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Farmeando AURA| Municipio Escolar 2027</title>
+  <title>Farmeando AURA, Lista 2 | Municipio Escolar 2027</title>
   <meta name="description" content="Lista 2 «Farmeando AURA» (Avanzamos Unidos, Renovando Actitudes). Conoce nuestro plan de trabajo, a la alcaldesa y a los regidores para el Municipio Escolar 2027 de Mariscal Luzuriaga." />
   <meta name="theme-color" content="#1b1009" />
   <meta property="og:title" content="Farmeando AURA, Lista 2 | Municipio Escolar 2027" />
   <meta property="og:description" content="El futuro de Mariscal Luzuriaga se farmea con actitud." />
   <meta property="og:type" content="website" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🥥%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -63,11 +63,7 @@
   <header class="nav" id="top">
     <div class="nav__inner">
       <a class="brand" href="#top" aria-label="Farmeando AURA, inicio">
-        <span class="brand__logo">
-          <!-- Pon tu logo en assets/logo.png (si no existe, se muestra la mascota) -->
-          <img src="assets/logo.png" alt="" width="44" height="44" onerror="this.remove()" />
-          <svg viewBox="0 0 400 300" aria-hidden="true"><use href="#mascots"/></svg>
-        </span>
+        <span class="brand__logo"><img src="assets/logo.png" alt="" width="52" height="56" /></span>
         <span class="brand__name">Farmeando AURA</span>
         <span class="list-badge list-badge--sm">Lista 2</span>
       </a>
@@ -79,7 +75,7 @@
       <nav class="nav__links" id="navLinks" aria-label="Principal">
         <a href="#aura">Quiénes somos</a>
         <a href="#propuestas">Plan de trabajo</a>
-        <a href="#plancha">Nuestra lista</a>
+        <a href="#plancha">Nuestra plancha</a>
         <a href="#votar">Cómo votar</a>
         <a class="nav__cta" href="#comentarios">Escríbenos</a>
       </nav>
@@ -107,7 +103,7 @@
  
         <div class="hero__aura">
           <button class="aura-btn" id="auraBtn" type="button" aria-describedby="auraHint">
-            <svg viewBox="0 0 400 300" role="img" aria-label="Mascotas de la plancha AURA: un pan y un coco"><use href="#mascots"/></svg>
+            <img src="assets/logo.png" alt="Logo de Farmeando AURA: un pan y un coco con el lema Avanzamos Unidos, Renovando Actitudes" width="456" height="488" fetchpriority="high" />
           </button>
           <div class="aura-meter">
             <p class="aura-meter__label">Tu aura</p>
@@ -315,7 +311,16 @@
             </div>
           </div>
  
-          
+          <details class="legal">
+            <summary>Base legal de nuestro plan</summary>
+            <ul>
+              <li>Ley N.° 28044, Ley General de Educación.</li>
+              <li>Ley N.° 27337, Código de los Niños y Adolescentes.</li>
+              <li>Resolución Viceministerial N.° 0067-2011-ED, normas para la organización y funcionamiento de los Municipios Escolares.</li>
+              <li>Resolución Ministerial N.° 587-2023-MINEDU, lineamientos para el desarrollo del año escolar en las instituciones educativas.</li>
+              <li>Proyecto Educativo Institucional (PEI) y Reglamento Interno (RI) de la I.E. Emblemática y Centenaria Mariscal Luzuriaga.</li>
+            </ul>
+          </details>
         </div>
       </div>
     </section>
@@ -323,7 +328,7 @@
     <!-- PLANCHA -->
     <section class="section" id="plancha">
       <div class="wrap">
-        <h2 class="section__title">Conoce a nuestra lista</h2>
+        <h2 class="section__title">Conoce a nuestra plancha</h2>
         <p class="section__lead">Somos la Lista 2, Farmeando AURA: estudiantes como tú, con ganas de que nuestro colegio mejore.</p>
  
         <!-- Fotos: assets/alcaldesa.jpg, teniente.jpg, regidor-educacion.jpg, regidor-bienestar.jpg, regidora-derechos.jpg, asesor.jpg -->
@@ -351,7 +356,14 @@
             <div class="regidor__info">
               <p class="role">Teniente Alcaldesa</p>
               <h4>Rosa María Magdalena Virhuez Portella</h4>
+              <p class="regidor__label">Su labor</p>
               <p class="regidor__text">Acompaña a la Alcaldesa en la gestión de becas y simulacros, la mejora de los espacios de descanso y la prevención del bullying.</p>
+              <p class="regidor__label">Actividades a su cargo</p>
+              <ul class="chips">
+                <li>Laboratorio del Futuro</li>
+                <li>Zonas de Descanso</li>
+                <li>Un Colegio Libre de Bullying</li>
+              </ul>
             </div>
           </article>
  
@@ -363,7 +375,17 @@
             <div class="regidor__info">
               <p class="role">Regidor de Educación</p>
               <h4>Elvis Adriano García Cabanillas</h4>
+              <p class="regidor__label">Su labor</p>
               <p class="regidor__text">Potenciar el rendimiento académico, la orientación vocacional, la expresión artística, la práctica deportiva y la identidad institucional y casmeña.</p>
+              <p class="regidor__label">Actividades a su cargo</p>
+              <ul class="chips">
+                <li>Tu Futuro Comienza Hoy</li>
+                <li>Descubre tu Vocación</li>
+                <li>El Esfuerzo Merece</li>
+                <li>Talento sin Límites</li>
+                <li>Recreos más Divertidos</li>
+                <li>Identidad Luzuriaguina</li>
+              </ul>
             </div>
           </article>
  
@@ -375,7 +397,15 @@
             <div class="regidor__info">
               <p class="role">Regidor de Bienestar</p>
               <h4>Delmi Llontop Temoche</h4>
-              <p class="regidor__text">Garantizar espacios dignos, promover el cuidado del ambiente con biohuertos y reciclaje, y fomentar hábitos de vida saludable</p>
+              <p class="regidor__label">Su labor</p>
+              <p class="regidor__text">Garantizar espacios higiénicos dignos, promover el cuidado del ambiente con biohuertos y reciclaje, y fomentar hábitos de vida saludable.</p>
+              <p class="regidor__label">Actividades a su cargo</p>
+              <ul class="chips">
+                <li>Servicios Higiénicos Dignos</li>
+                <li>Un Colegio Limpio</li>
+                <li>Colegio Verde y Saludable</li>
+                <li>Guardianes del Medioambiente</li>
+              </ul>
             </div>
           </article>
  
@@ -387,7 +417,16 @@
             <div class="regidor__info">
               <p class="role">Regidora de Derechos del Niño, Niña y Adolescente</p>
               <h4>Luana Daleska Mendez Corcino</h4>
-              <p class="regidor__text"> Promover un clima escolar seguro y solidario, libre de violencia y acoso escolar, e impulsar iniciativas de apoyo a estudiantes vulnerables.</p>
+              <p class="regidor__label">Su labor</p>
+              <p class="regidor__text">Promover un clima escolar seguro y solidario, libre de violencia y acoso escolar, e impulsar iniciativas de apoyo a estudiantes vulnerables.</p>
+              <p class="regidor__label">Actividades a su cargo</p>
+              <ul class="chips">
+                <li>Un Espacio Seguro para Todos</li>
+                <li>Un Uniforme, Nuevas Oportunidades</li>
+                <li>Útiles que Construyen Sueños</li>
+                <li>Un Colegio Libre de Bullying</li>
+                <li>Tu Voz También Cuenta</li>
+              </ul>
             </div>
           </article>
         </div>
@@ -415,7 +454,7 @@
     <!-- CÓMO VOTAR -->
     <section class="section section--alt" id="votar">
       <div class="wrap wrap--narrow">
-        <h2 class="section__title">Cómo votar por la LISTA 2</h2>
+        <h2 class="section__title">Cómo votar por AURA</h2>
         <p class="section__lead">Votar es rápido, secreto y tu voto vale igual que el de todos.</p>
  
         <ol class="steps">
@@ -458,7 +497,7 @@
  
           <button class="btn btn--primary btn--full" type="submit">Enviar mensaje</button>
           <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
-          <p class="form__note">Al enviar, se abrirá WhatsApp con tu mensaje listo para mandar a la lista.</p>
+          <p class="form__note">Al enviar, se abrirá WhatsApp con tu mensaje listo para mandar a la plancha.</p>
         </form>
       </div>
     </section>
@@ -481,6 +520,13 @@
         <a href="https://www.tiktok.com/@farmeando.aura.ml" target="_blank" rel="noopener">TikTok</a>
       </div>
  
+      <div class="visits" aria-live="polite">
+        <p class="visits__label">Esta página ha sido visitada</p>
+        <p class="visits__odometer" id="visitCount" aria-label="Contador de visitas">
+          <span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span>
+        </p>
+        <p class="visits__label">veces</p>
+      </div>
     </div>
     <p class="footer__copy">Municipio Escolar 2027 · I.E. Emblemática y Centenaria Mariscal Luzuriaga · Casma, Áncash</p>
   </footer>

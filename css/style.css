@@ -80,14 +80,8 @@ p { margin: 0; }
   min-height: 68px; gap: 16px;
 }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.brand__logo {
-  position: relative; width: 46px; height: 46px; border-radius: 50%;
-  background: var(--crema); overflow: hidden; flex: none;
-  border: 2px solid var(--pan);
-  display: grid; place-items: center;
-}
-.brand__logo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
-.brand__logo svg { width: 120%; height: auto; }
+.brand__logo { display: block; flex: none; }
+.brand__logo img { height: 56px; width: auto; }
 .brand__name { font-family: var(--font-display); font-size: 1.35rem; }
 .list-badge {
   display: inline-block; background: var(--pan); color: var(--horno);
@@ -147,14 +141,14 @@ p { margin: 0; }
  
 .hero__aura { display: flex; flex-direction: column; align-items: center; gap: 18px; }
 .aura-btn {
-  position: relative; width: min(100%, 420px); aspect-ratio: 4 / 3.2;
+  position: relative; width: min(100%, 420px); aspect-ratio: 456 / 488;
   background: radial-gradient(closest-side, rgba(244,163,64,.28), rgba(244,163,64,0) 72%);
   border: 0; padding: 0; cursor: pointer; border-radius: 50%;
   -webkit-tap-highlight-color: transparent;
   animation: bob 4.5s ease-in-out infinite;
 }
-.aura-btn svg { width: 100%; height: 100%; filter: drop-shadow(0 14px 18px rgba(0,0,0,.45)); transition: transform .12s; }
-.aura-btn:active svg { transform: scale(.94) rotate(-2deg); }
+.aura-btn img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 14px 18px rgba(0,0,0,.45)); transition: transform .12s; }
+.aura-btn:active img { transform: scale(.94) rotate(-2deg); }
  
 @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
  
@@ -234,7 +228,13 @@ p { margin: 0; }
 .regidor:nth-child(4) { --card: var(--crema); }
 .regidor .role { font-weight: 800; font-size: 1rem; line-height: 1.3; color: var(--brasa); }
 .regidor h4 { font-size: clamp(1.35rem, 2.4vw, 1.7rem); line-height: 1.12; margin-top: 4px; }
-.regidor__text { margin-top: 10px; font-weight: 600; font-size: 1.05rem; line-height: 1.5; max-width: 52ch; }
+.regidor__label { margin-top: 16px; font-weight: 800; font-size: .88rem; color: var(--brasa); }
+.regidor__text { margin-top: 4px; font-weight: 600; font-size: 1.05rem; line-height: 1.5; max-width: 60ch; }
+.chips { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li {
+  padding: 6px 14px; border-radius: 999px; font-weight: 700; font-size: .92rem; line-height: 1.3;
+  background: rgba(27, 16, 9, .1); border: 1.5px solid rgba(27, 16, 9, .28);
+}
 .team { margin-top: 24px; display: grid; grid-template-columns: 1fr; gap: 18px; }
 /* Objetivos */
 .goals {
@@ -395,6 +395,7 @@ p { margin: 0; }
   .section { padding: 64px 0; }
   .hero { padding-top: 32px; }
   .mayor, .regidor { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 28px 22px; }
+  .chips { justify-content: center; }
   .mayor blockquote { border-left: 0; padding-left: 0; border-top: 4px solid var(--horno); padding-top: 14px; }
   .form__row { grid-template-columns: 1fr; }
   .form { padding: 22px 18px; }
